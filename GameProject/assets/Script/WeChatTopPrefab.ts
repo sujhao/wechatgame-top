@@ -1,5 +1,6 @@
 import PrefabLoader from "./engine/utils/PrefabLoader";
 import Logger from "./engine/utils/Logger";
+import WechatHelper from "./engine/utils/WechatHelper";
 
 const { ccclass, property } = cc._decorator;
 
@@ -17,22 +18,11 @@ export default class WeChatTopPrefab extends cc.Component {
     }
 
     start() {
-        if (CC_WECHATGAME) {
-            // this.tex = new cc.Texture2D();
-            // window.sharedCanvas.width = GameConfig.DesignWidth;
-            // window.sharedCanvas.height = GameConfig.DesignHeight;
-            // // // 发消息给子域
-            // // if (this.shareTicket != null) {
-            // //     window.wx.postMessage({
-            // //         messageType: 5,
-            // //         MAIN_MENU_NUM: GameConfig.MAIN_MENU_NUM,
-            // //         shareTicket: this.shareTicket
-            // //     });
-            // // } else {
-            //     Logger.log("RankingListView=====getFriendTopScore");
-            //     WechatHelper.getFriendTopScore();
-            // }
-        } 
+        this.texture = new cc.Texture2D();
+        let designsize = cc.view.getDesignResolutionSize();
+        window.sharedCanvas.width = designsize.width;
+        window.sharedCanvas.height = designsize.height;
+        WechatHelper.getFriendTopScore();
     }
 
 
@@ -52,7 +42,11 @@ export default class WeChatTopPrefab extends cc.Component {
     }
 
 
-    // update (dt) {}
+    private onClickClose(){
+        this.node.destroy();
+        WechatHelper.closeTop();
+    }
+
 
     public static show(parentNode: cc.Node = null) {
         PrefabLoader.loadPrefab("prefab/WeChatTopPrefab", (loadedResource: any) => {

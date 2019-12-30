@@ -1,5 +1,6 @@
 import Logger from "./engine/utils/Logger";
 import WechatHelper from "./engine/utils/WechatHelper";
+import WeChatTopPrefab from "./WeChatTopPrefab";
 
 const { ccclass, property } = cc._decorator;
 
@@ -11,7 +12,7 @@ export default class Helloworld extends cc.Component {
 
     private onClickTop() {
         if (WechatHelper.isWechatGame()) {
-
+            WeChatTopPrefab.show();
         }
     }
 }
