@@ -1,5 +1,4 @@
 import RankItem from "./RankItem";
-import AdapterHelper from "./AdapterHelper";
 
 const { ccclass, property } = cc._decorator;
 
@@ -16,7 +15,6 @@ export default class GameRankingList extends cc.Component {
     prefabRankItem: cc.Prefab = null;
 
     onLoad() {
-        // AdapterHelper.fixApdater()
         console.log("GameRankingList onHaoLoad");
     }
 
