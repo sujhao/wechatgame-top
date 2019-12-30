@@ -28,10 +28,14 @@ export default class WeChatTopPrefab extends cc.Component {
 
     // 刷新子域的纹理到游戏
     private updateSubDomainCanvas() {
-        if (cc.sys.platform == cc.sys.WECHAT_GAME) {
-            if (window.sharedCanvas != undefined) {
-                this.texture.initWithElement(window.sharedCanvas);
+        if (WechatHelper.isWechatGame()) {
+            let openDataContext = wx.getOpenDataContext();
+            let sharedCanvas = openDataContext.canvas;
+            if (sharedCanvas) {
+                this.texture.initWithElement(sharedCanvas);
+                // this.texture.handleLoadedTexture();
                 this.topSprite.spriteFrame = new cc.SpriteFrame(this.texture);
+                // this.topSprite.getComponent(cc.WXSubContextView).updateSubContextViewport()
             }
         }
     }
@@ -51,7 +55,7 @@ export default class WeChatTopPrefab extends cc.Component {
     public static show(parentNode: cc.Node = null) {
         PrefabLoader.loadPrefab("prefab/WeChatTopPrefab", (loadedResource: any) => {
             if (!parentNode) {
-                parentNode = cc.director.getScene();
+                parentNode = cc.Canvas.instance.node;
             }
             let dialogNode: cc.Node = cc.instantiate(loadedResource);
             parentNode.addChild(dialogNode);

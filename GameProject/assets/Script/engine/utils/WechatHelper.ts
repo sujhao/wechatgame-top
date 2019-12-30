@@ -1,8 +1,8 @@
 import Logger from "../../engine/utils/Logger";
 
 export enum WechatSub_MsgType {
-    SubmitTopScore = 1,
-    GetFriendScore = 2,
+    GetFriendScore = 1,
+    SubmitTopScore = 2,
     CloseTop = 3,
 }
 
@@ -17,7 +17,7 @@ export default class WechatHelper {
      * 是否微信小游戏环境
      */
     public static isWechatGame() {
-        Logger.log("isWechatGame=", cc.sys.platform, cc.sys.WECHAT_GAME, cc.sys.WECHAT_GAME_SUB)
+        // Logger.log("isWechatGame=", cc.sys.platform, cc.sys.WECHAT_GAME, cc.sys.WECHAT_GAME_SUB)
         return cc.sys.platform == cc.sys.WECHAT_GAME;
     }
 

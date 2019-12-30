@@ -4,7 +4,24 @@
       true
     ]
   ],
-  "excluded-modules": [],
+  "excluded-modules": [
+    "Collider",
+    "DragonBones",
+    "Geom Utils",
+    "Mesh",
+    "Native Socket",
+    "Physics",
+    "PageView",
+    "PageViewIndicator",
+    "ParticleSystem",
+    "Spine Skeleton",
+    "StudioComponent",
+    "TiledMap",
+    "VideoPlayer",
+    "WebView",
+    "3D",
+    "3D Primitive"
+  ],
   "group-list": [
     "default"
   ],
@@ -15,20 +32,20 @@
   "fit-height": true,
   "use-project-simulator-setting": false,
   "simulator-orientation": false,
-  "use-customize-simulator": false,
+  "use-customize-simulator": true,
   "simulator-resolution": {
-    "width": 960,
-    "height": 640
+    "height": 640,
+    "width": 960
   },
-  "last-module-event-record-time": 0,
+  "last-module-event-record-time": 1577672340898,
   "assets-sort-type": "name",
   "facebook": {
-    "enable": false,
     "appID": "",
-    "live": {
+    "audience": {
       "enable": false
     },
-    "audience": {
+    "enable": false,
+    "live": {
       "enable": false
     }
   }
